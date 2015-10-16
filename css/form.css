@@ -1,0 +1,98 @@
+.form {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+   padding:1.5rem;
+   box-shadow:0 1px 2px #000000;
+   background: rgba(0, 0, 0, 0.4);
+   margin:0 1rem 1rem;
+   border-radius:3px;
+   user-select:none;
+   animation-name: fly-bottom;
+   animation-duration: 1s;
+
+
+      -webkit-transition: all 1s ease;
+       -moz-transition: all 1s ease;
+       -o-transition: all 1s ease;
+       transition: all 1s ease;
+       opacity: 1;
+}
+
+.slide{
+  top:150%;
+  opacity: 0;
+}
+
+.form h1 {
+    font-size: 35px;
+    padding: 0px 0px 10px 40px;
+    display: block;
+    border-bottom:1px solid #E4E4E4;
+    margin: -10px -15px 30px -10px;;
+    color: white;
+}
+.form h1>span {
+    display: block;
+    font-size: 25px;
+}
+.form label {
+    display: block;
+    margin: 0px;
+}
+.form label>span {
+    float: left;
+    width: 20%;
+    text-align: right;
+    padding-right: 10px;
+    margin-top: 10px;
+    color: white;
+}
+.form input[type="text"], .form input[type="email"], .form textarea, .form select {
+    border: 1px solid #DADADA;
+    color: #333333;
+    height: 30px;
+    margin-bottom: 16px;
+    margin-right: 6px;
+    margin-top: 2px;
+    outline: 0 none;
+    padding: 3px 3px 3px 5px;
+    width: 70%;
+    font-size: 20px;
+    line-height:15px;
+    box-shadow: inset 0px 1px 4px #ECECEC;
+    -moz-box-shadow: inset 0px 1px 4px #ECECEC;
+    -webkit-box-shadow: inset 0px 1px 4px #ECECEC;
+}
+.form textarea{
+    padding: 5px 3px 3px 5px;
+}
+.form textarea{
+    height:100px;
+}
+.form .button {
+    background: #E27575;
+    border: none;
+    padding: 10px 25px 10px 25px;
+    color: #FFF;
+    border-radius: 3px;
+    text-shadow: 1px 1px 1px #9E3F3F;
+    cursor: pointer;
+}
+.form input[type="file"]{
+  color: white;
+  height: 30px;
+  margin-bottom: 16px;
+  margin-right: 6px;
+  margin-top: 2px;
+  outline: 0 none;
+  padding: 3px 3px 3px 5px;
+  width: 70%;
+  font-size: 20px;
+  line-height:15px;
+}
+.form .button:hover {
+    background: #CF7A7A
+}

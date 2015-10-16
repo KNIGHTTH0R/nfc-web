@@ -1,0 +1,281 @@
+html {
+    color: #222;
+    font-size: 1em;
+    line-height: 1.4;
+}
+
+::-moz-selection {
+    background: #b3d4fc;
+    text-shadow: none;
+}
+
+::selection {
+    background: #b3d4fc;
+    text-shadow: none;
+}
+
+hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #ccc;
+    margin: 1em 0;
+    padding: 0;
+}
+
+audio,
+canvas,
+iframe,
+img,
+svg,
+video {
+    vertical-align: middle;
+}
+
+fieldset {
+    border: 0;
+    margin: 0;
+    padding: 0;
+}
+
+textarea {
+    resize: vertical;
+}
+
+
+/* ==========================================================================
+   Author's custom styles
+   ========================================================================== */
+
+body{
+  background-color: #e74c3c;
+  background: url("https://cdn.designmaz.net/wp-content/uploads/2014/10/flat-design-wallpapers-HD-03.jpg");
+}
+
+@keyframes fly-top {
+    from { top:-50% }
+    to {top: 20%}
+}
+
+@keyframes fly-bottom {
+    from { top:150% }
+    to {top: 50%}
+}
+
+@keyframes toDown {
+    from { top:50% }
+    to {top: 150%}
+}
+@keyframes show-item {
+  from {  opacity: 0;
+          transform: rotateY(-90deg);}
+  to {opacity: 1;
+      transform: none;}
+}
+
+.login-form{
+  -webkit-transition: all 1s ease;
+   -moz-transition: all 1s ease;
+   -o-transition: all 1s ease;
+   transition: all 1s ease;
+   opacity: 1;
+}
+
+.main-header{
+  position: fixed;
+  top: 20%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  font-size: 150px;
+  color:white;
+  font-family: 'Exo 2', sans-serif;
+  font-weight: 200;
+
+  animation-name: fly-top;
+  animation-duration: 1s;
+
+}
+
+.login-wrap{
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+
+   padding:1.5rem;
+   box-shadow:0 1px 2px #000000;
+   background: rgba(0, 0, 0, 0.4);
+
+   border-radius:3px;
+   user-select:none;
+   animation-name: fly-bottom;
+   animation-duration: 1s;
+}
+
+.login-text{
+  display: block;
+  padding:5px;
+  color:white;
+  margin: 0;
+  font-family: sans-serif;
+  font-size: 22px;
+  background-color: transparent;
+  appearance: none;
+  box-shadow: none;
+  border-radius: none;
+  border: 1px solid #666666;
+}
+
+.password{
+  -webkit-text-security: circle;
+}
+
+.login-text:focus{
+  border: 1px solid white;
+}
+
+.login-header{
+  margin:5px;
+  color:white;
+  text-align: left;
+  font-size: 20px;
+}
+
+.login-submit{
+	background-color:#FFFFFF;
+  margin-top: 20px;
+  width:100%;
+	color:#000000;
+	font-size:18px;
+	line-height:30px;
+	border-radius:0px;
+	-webkit-border-radius:0px;
+	-moz-border-radius:0px;
+	border:0;
+	width:120px;
+	height:32px;
+
+}
+
+.login-register{
+  margin-top: 5px;
+  text-align: right;
+  font-size: 10px;
+  color:white;
+  text-decoration: none;
+}
+
+
+.edit-input{
+  border: 0 solid transparent;
+  width: 100%;
+  padding: 3px;
+}
+.edit-input:focus{
+  border:0 solid red;
+   outline: 0;
+}
+
+.edit-item-img
+{
+    background-repeat:no-repeat;
+    width:300px;
+    height:250px;
+}
+
+.edit-item-desc{
+  background: rgba(0, 0, 0, 0.65);
+  height:50%;
+  position: absolute;
+  top: 50%;
+  left: 0%;
+  color:white;
+  width: 300px;
+
+}
+
+.edit-item-name{
+  display: block;
+  font-size: 25px;
+  padding-left: 20px;
+  padding-top: 20px;
+}
+
+.content{
+  margin: 0 auto;
+  margin-top: 50px;
+  width:1200px;
+
+}
+
+.g{
+  list-style-image: none;
+  list-style: none;
+	overflow: hidden;
+  padding: 0;
+  cursor: pointer;
+}
+
+.g li {
+	float: left;
+  width:300px;
+  position: relative;
+  animation-name: show-item;
+  animation-duration: 1s;
+}
+
+.g li:nth-child(4n+1) {
+  	clear: left;
+}
+
+
+
+/* ==========================================================================
+   Helper classes
+   ========================================================================== */
+
+
+.align-right{
+  text-align: right;
+}
+
+.hidden {
+    display: none !important;
+}
+
+.visuallyhidden {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+}
+
+.visuallyhidden.focusable:active,
+.visuallyhidden.focusable:focus {
+    clip: auto;
+    height: auto;
+    margin: 0;
+    overflow: visible;
+    position: static;
+    width: auto;
+}
+
+.invisible {
+    visibility: hidden;
+}
+
+.clearfix:before,
+.clearfix:after {
+    content: " "; /* 1 */
+    display: table; /* 2 */
+}
+
+.clearfix:after {
+    clear: both;
+}
