@@ -22,12 +22,8 @@
         </label>
         <label>
             <span>&nbsp;</span>
-            <input type="button" class="button save" value="OK"/>
+            <input type="button" class="button save form-register-submit" value="OK"/>
         </label>
     </form>
   </div>
-{% endblock %}
-
-{% block scripts %}
-  <script type="text/javascript" src="./js/register.js"></script>
 {% endblock %}
