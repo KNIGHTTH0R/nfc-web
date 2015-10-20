@@ -9,7 +9,7 @@
 
   $res = $c->get('http://'.$_SERVER["SERVER_NAME"].'/api/places/'.$id.'/items');
 
-
+  var_dump($res);
 
   $items = json_decode($res);
 
