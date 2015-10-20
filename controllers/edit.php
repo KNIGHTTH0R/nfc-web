@@ -9,9 +9,11 @@
 
   $res = $c->get('http://'.$_SERVER["SERVER_NAME"].'/api/places/'.$id.'/items');
 
-  die($res);
+
 
   $items = json_decode($res);
+
+  var_dump($items);
 
   //removing cached version of image
  foreach ($items as $item) {
