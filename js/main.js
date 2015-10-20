@@ -81,11 +81,12 @@ $(function(){
            type: "POST",
            url: "/scripts/postRest.php",
            data: {name:name, url: "items"},
-           dataType: "text",
+           dataType: "json",
            success: function(data){
              window.location.replace("");
            },
            error: function(data){
+             console.log(data);
               toastr.error("Nastala neznámá chyba");
            }
       });
@@ -101,7 +102,6 @@ $(function(){
       var name = this.getAttribute("data-name");
       var xhr = new XMLHttpRequest();
       xhr.addEventListener('load', function(e) {
-          console.log("wtf");
           uploading = false;
           $(".loading").hide(100);
       });
