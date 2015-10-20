@@ -3,6 +3,8 @@
   $auth = new Auth();
   $id = $auth->validate();
 
+  die($id);
+
   $c = new Rest();
 
   $res = $c->get('http://'.$_SERVER["SERVER_NAME"].'/api/places/'.$id.'/items');
