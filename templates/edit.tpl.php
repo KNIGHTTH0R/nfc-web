@@ -13,6 +13,9 @@
             </a>
           </li>
           {% endfor %}
+          <li>
+            <div class="add-item">+</div>
+          </li>
       </ul>
     </div>
 

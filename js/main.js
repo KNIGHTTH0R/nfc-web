@@ -1,6 +1,8 @@
 var uploading = false;
 $(function(){
 
+  $(".eq").remove();
+
   //Login form
   $(".login-form").submit(function(e) {
       $.ajax({
@@ -68,6 +70,26 @@ $(function(){
            }
       });
       return false;
+  });
+
+  /// add-item
+
+  $(".add-item").click(function(){
+    var name = prompt("Název");
+    if(name != ""){
+      $.ajax({
+           type: "POST",
+           url: "/scripts/postRest.php",
+           data: {name:name, url: "items"},
+           dataType: "text",
+           success: function(data){
+             window.location.replace("");
+           },
+           error: function(data){
+              toastr.error("Nastala neznámá chyba");
+           }
+      });
+    }
   });
 
 

@@ -32,5 +32,18 @@ $app->put('/items/:id', function($id){
   echo json_encode(array("status" => "success", "code" => 1));
 });
 
+$app->post('/items/', function(){
+  $app = \Slim\Slim::getInstance();
+  $data = $app->request->post();
+  $db = new Database();
+  $db->query('INSERT INTO items (owner, name) VALUES (:owner, :name)');
+  $db->bind(':name', $data["name"]);
+  $db->bind(':owner',$data["owner"]);
+  $db->execute();
+  $app = \Slim\Slim::getInstance();
+  $app->response->setStatus(200);
+  echo json_encode(array("status" => "success", "code" => 1));
+});
+
 
 ?>
