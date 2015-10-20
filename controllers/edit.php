@@ -11,9 +11,11 @@
 
   var_dump($res);
 
-  print(json_last_error_msg());
+
 
   $items = json_decode($res);
+
+    print(json_last_error_msg());
 
   var_dump($items);
 
