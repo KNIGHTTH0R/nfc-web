@@ -30,6 +30,11 @@ error_reporting(E_ALL);
       require "controllers/edit.php";
     });
 
+    Router::route('/register', function(){
+      global $twig;
+      require "controllers/register.php";
+    });
+
     Router::execute($_SERVER['REQUEST_URI']);
 
 
