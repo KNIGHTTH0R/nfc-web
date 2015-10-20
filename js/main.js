@@ -3,20 +3,22 @@ $(function(){
 
   //Login form
   $(".login-form").submit(function(e) {
-    console.log("login");
-      var url = "controllers/login.php";
       $.ajax({
            type: "GET",
-           url: url,
+           url: "controllers/login.php",
            data: $(".login-form").serialize(),
            dataType:"json",
            success: function(data){
-             console.log(data);
+              console.log(data);
+
                if(data.status != "ok"){
                  toastr.error("", data.message);
                }else{
                  location.href = "edit";
                }
+           }, error: function(data){
+                console.error(data);
+                toastr.error("", "Nastala neznámá chyba");
            }
       });
       e.preventDefault();
@@ -89,7 +91,7 @@ $(function(){
 
       var reader = new FileReader();
       reader.onloadend = function(){
-        $("body").css("background-image", "url(" + reader.result + ")");        
+        $("body").css("background-image", "url(" + reader.result + ")");
       }
       if(file){
         reader.readAsDataURL(file);

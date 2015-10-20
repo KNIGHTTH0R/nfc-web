@@ -2,10 +2,6 @@
 
 class Database
 {
-    private $host   = "127.0.0.1";
-    private $user   = "admin";
-    private $pass   = "admin";
-    private $dbname = "nfc";
 
     private $dbh;
     public $error;
@@ -14,14 +10,16 @@ class Database
 
     public function __construct()
     {
-        $dsn = 'mysql:host=' . $this->host . ';dbname=' . $this->dbname.";charset=utf8";
+        require_once "configs/config.php";
+
+        $dsn = 'mysql:host=' . $db_config["host"] . ';dbname=' . $db_config["dbname"].";charset=utf8";
         $options = array(
             PDO::ATTR_PERSISTENT    => true,
             PDO::ATTR_ERRMODE       => PDO::ERRMODE_EXCEPTION,
 						PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"
         );
         try {
-            $this->dbh = new PDO($dsn, $this->user, $this->pass, $options);
+            $this->dbh = new PDO($dsn, $db_config["user"], $db_config["password"], $options);
         }
         catch(PDOException $e) {
             $this->error = $e->getMessage();
