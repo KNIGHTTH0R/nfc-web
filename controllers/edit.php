@@ -12,8 +12,6 @@
 
   //removing cached version of image
  foreach ($items as $item) {
-   print $item->id;
-
    $path = $_SERVER["DOCUMENT_ROOT"] ."/assets/images/item_".$item->id.".jpg";
    if(file_exists($path)){
      $item->imgurl = "assets/images/".$item->image.".jpg?".filemtime($path);
