@@ -33,13 +33,17 @@ $(function(){
       $(".form-item").addClass("slide");
       setTimeout( function () {
           if(!uploading){
-            var url = "./api/items/"+$(this).parent().parent().find("#id").val();
+            var url = "/api/items/"+$(".form-item").find("#id").val();
+            console.log(url);
             $.ajax({
                 type: "PUT",
                 url: url,
                 data: $(".form-item").serialize(),
                 success: function(data){
+                    console.log(data);
                     window.location.replace("/edit");
+                },error: function(data){
+                    console.log(data);
                 }
             });
           }else{
@@ -86,7 +90,7 @@ $(function(){
              window.location.replace("");
            },
            error: function(data){
-             console.log(data);
+             console.log(data)
               toastr.error("Nastala neznámá chyba");
            }
       });

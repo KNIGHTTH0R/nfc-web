@@ -9,15 +9,7 @@
 
   $res = $c->get('http://'.$_SERVER["SERVER_NAME"].'/api/places/'.$id.'/items');
 
-  var_dump($res);
-
-
-
   $items = json_decode($res);
-
-    print(json_last_error_msg());
-
-  var_dump($items);
 
   //removing cached version of image
  foreach ($items as $item) {
