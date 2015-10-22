@@ -1,5 +1,4 @@
 <?php
-header('Content-Type: application/json');
 
 $app->get('/places/:owner/items', function($owner){
   $app = \Slim\Slim::getInstance();

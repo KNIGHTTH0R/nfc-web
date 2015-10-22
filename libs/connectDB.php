@@ -61,7 +61,6 @@ class Database
     }
 
 		public function getJSON(){
-					header("Content-type: application/json; charset=utf-8");
 					$this->execute();
 					$rows = $this->stmt->fetchAll(PDO::FETCH_ASSOC);
 					return json_encode($rows);

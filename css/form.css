@@ -68,9 +68,10 @@
 }
 .form textarea{
     padding: 5px 3px 3px 5px;
+    font-size: 12px;
 }
 .form textarea{
-    height:100px;
+    height: 200px;
 }
 .form .button {
     background: #E27575;
