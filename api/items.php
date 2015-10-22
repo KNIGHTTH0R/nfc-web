@@ -36,7 +36,7 @@ $app->post('/items/', function(){
   $app = \Slim\Slim::getInstance();
   $data = $app->request->post();
   $db = new Database();
-  $db->query('INSERT INTO items (owner, name, image) SELECT ":owner",":name", CONCAT("item_", MAX(`id`)+1) FROM items');
+  $db->query('INSERT INTO items (owner, name, image) SELECT :owner,:name, CONCAT("item_", MAX(`id`)+1) FROM items');
   $db->bind(':name', $data["name"]);
   $db->bind(':owner',$data["owner"]);
   $db->execute();
