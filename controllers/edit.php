@@ -8,8 +8,7 @@
   $res = $c->get('http://'.$_SERVER["SERVER_NAME"].'/api/places/'.$id.'/items');
 
 ///// Workaround for Endora hosting
-  $res = getStringBetween($res, "[","]");
-  $items = json_decode("[".$res."]");
+  $res = "[".getStringBetween($res, "[","]")."]";
 ////
 
   $items = json_decode($res);

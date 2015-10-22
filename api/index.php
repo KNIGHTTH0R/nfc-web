@@ -6,7 +6,7 @@ error_reporting(E_ALL);
 require '../vendor/autoload.php';
 require "../libs/connectDB.php";
 
-header("Content-type: text/json; charset=utf-8");
+header("Content-type: text/plain; charset=utf-8");
 
 $app = new \Slim\Slim;
 
