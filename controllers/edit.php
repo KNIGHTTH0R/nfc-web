@@ -3,11 +3,14 @@
   $auth = new Auth();
   $id = $auth->validate();
 
-
-
   $c = new Rest();
 
   $res = $c->get('http://'.$_SERVER["SERVER_NAME"].'/api/places/'.$id.'/items');
+
+///// Workaround for Endora hosting
+  $res = getStringBetween($res, "[","]");
+  $items = json_decode("[".$res."]");
+////
 
   $items = json_decode($res);
 
@@ -21,6 +24,13 @@
    }
  }
   echo $twig->render('edit.tpl.php', array("items" => $items));
+
+
+function getStringBetween($str,$from,$to){
+  $sub = substr($str, strpos($str,$from)+strlen($from),strlen($str));
+  return substr($sub,0,strpos($sub,$to));
+}
+
 
 
 ?>

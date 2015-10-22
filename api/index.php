@@ -6,7 +6,7 @@ error_reporting(E_ALL);
 require '../vendor/autoload.php';
 require "../libs/connectDB.php";
 
-header("Content-type: application/json; charset=utf-8");
+header("Content-type: text/json; charset=utf-8");
 
 $app = new \Slim\Slim;
 
@@ -23,7 +23,7 @@ $app->get('/places', function(){
   $app = \Slim\Slim::getInstance();
   $app->response->setStatus(200);
   echo $db -> getJSON();
-  echo $db -> error;
+
 });
 
 $app->get('/places/:id', function($id){
