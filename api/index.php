@@ -1,15 +1,12 @@
 <?php
-
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
+
 
 require '../vendor/autoload.php';
 require "../libs/connectDB.php";
 
-header("Content-type: text/plain; charset=utf-8");
-
 $app = new \Slim\Slim;
-
 
 $app->get('/', function() {
     $app = \Slim\Slim::getInstance();
@@ -17,7 +14,9 @@ $app->get('/', function() {
     echo "Welcome to Slim 3.0 based API";
 });
 
+
 $app->get('/places', function(){
+  //fetch all places
   $db = new Database();
   $db->query('SELECT id, name FROM places');
   $app = \Slim\Slim::getInstance();
@@ -27,6 +26,7 @@ $app->get('/places', function(){
 });
 
 $app->get('/places/:id', function($id){
+  //fetch single place
   $app = \Slim\Slim::getInstance();
   $db = new Database();
   $db->query('SELECT id, name FROM places WHERE id = :id');
@@ -36,6 +36,7 @@ $app->get('/places/:id', function($id){
 });
 
 $app->put('/places/:id', function($id){
+  //Update place
   $app = \Slim\Slim::getInstance();
   $data = $app->request->post();
   $db = new Database();
@@ -49,6 +50,7 @@ $app->put('/places/:id', function($id){
 });
 
 $app->put('/places/:id', function($id){
+  //Insert new place
   $app = \Slim\Slim::getInstance();
   $data = $app->request->post();
   $db = new Database();
@@ -64,6 +66,12 @@ $app->put('/places/:id', function($id){
 
 
 $app->post('/register/', function(){
+  // add new User/place
+
+  /*
+  * TODO - remove PUT /places/:id
+  */
+
   $app = \Slim\Slim::getInstance();
   $response = $app->response();
   $response['Content-Type'] = 'application/json';
@@ -98,7 +106,43 @@ $app->post('/register/', function(){
 
 
 
+$app -> post("/login/", function() use ($app) {
+  // Verify login credentials and return id
+  $response = $app->response();
+  $response['Content-Type'] = 'application/json';
+  $db = new Database();
+  $username = $app->request->post('username');
+  $password = $app->request->post('password');
+  if($username == "" || $password == ""){
+    $app->halt(400,json_encode(array("status"=>"error","message" => "Musíte vyplnit všechny údaje", "pass" => $password)));
+  }
+  $db->query('SELECT salt, password FROM places WHERE username = :user LIMIT 1');
+  $db->bind(':user', $username);
+  $result = $db -> getArray();
+  if(!$result){
+    $app->halt(400,json_encode(array("status"=>"error","message" => "Neexistující uživatel")));
+  }else{
+    $salt = $result[0]["salt"];
+    $token = hash('sha256', $password.$salt);
+  }
+  $db->query('SELECT id FROM places WHERE username = :user AND password = :pass LIMIT 1');
+  $db->bind(':user', $username);
+  $db->bind(':pass', $token);
+  $result = $db->getArray();
+  if(!$result){
+    echo json_encode(array("status"=>"error","message" => "Špatné heslo"));
+  }else{
+    echo json_encode(array("status"=>"ok","message" => $result[0]["id"]));
+  }
+
+
+
+});
+
+
+
 include("items.php");
+
 
 $app->run();
 
